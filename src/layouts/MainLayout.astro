@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 interface Props {
 	title: string;
 	description?: string;
@@ -19,6 +20,7 @@ const { title, description = 'Bluesoft - Tworzymy technologie przyszłości' } =
 		<title>{title}</title>
 	</head>
 	<body>
+		<Analytics />
 		<slot />
 		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
 		<script is:inline>
