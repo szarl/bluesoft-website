@@ -1,0 +1,85 @@
+---
+import ServiceIcon from './ServiceIcon.astro';
+
+const services = [
+	{
+		title: 'Sieci i systemy teleinformatyczne',
+		description:
+			'Wykonuje projekty oraz wdrożenia kompleksowych rozwiązań sieciowych i systemów teleinformatycznych, uwzględniając najnowsze dostępne technologie sieciowe.',
+		icon: 'network',
+	},
+	{
+		title: 'Oświetlenie LED',
+		description:
+			'Wykonuje projekty oraz wdrożenia kompleksowych rozwiązań oświetlenia LED, uwzględniając najnowsze dostępne technologie w tym zakresie.',
+		icon: 'led',
+	},
+	{
+		title: 'Oprogramowanie',
+		description:
+			'Tworzymy oprogramowanie dla firm i instytucji w zależności od potrzeb. Zajmujemy się również sprzedażą oprogramowania specjalistycznego innych firm.',
+		icon: 'software',
+	},
+	{
+		title: 'Systemy Zarządzania Energią',
+		description: 'Wykonujemy projekty oraz instalacje z zakresu zarządzania energią. Prowadzimy także audyty jak i doradztwo z tym związane.',
+		icon: 'energy',
+	},
+	{
+		title: 'System Automatyki Budynkowej',
+		description:
+			'Planujemy i wdrażamy systemy inteligentnego zarządzania budynkami z wykorzystaniem naszych technologii i wieloletniego doświadczenia.',
+		icon: 'building',
+	},
+	{
+		title: 'Systemy Teletechniczne w Drogownictwie',
+		description:
+			'Wykonujemy niezbędne elementy projektu dla systemów teletechnicznych, w tym dróg i autostrad w zależności od potrzeb naszych klientów.',
+		icon: 'road',
+	},
+];
+---
+
+<section class="py-20 bg-gray-50">
+	<div class="container mx-auto px-6">
+		<div class="text-center mb-16" data-aos="fade-up">
+			<h2 class="text-4xl font-bold text-primary mb-4">Tworzymy technologie</h2>
+			<p class="text-xl text-gray-600">Pracujemy dla Was</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{
+				services.map((service, index) => (
+					<div
+						data-aos="fade-up"
+						data-aos-delay={index * 100}
+						class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+					>
+						<div class="p-8">
+							<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+								<ServiceIcon name={service.icon} />
+							</div>
+							<h3 class="text-xl font-bold text-primary mb-4">{service.title}</h3>
+							<p class="text-gray-600 leading-relaxed">{service.description}</p>
+							<a
+								href={`/uslugi/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+								class="inline-flex items-center mt-6 text-accent hover:text-primary transition-colors duration-300"
+							>
+								Dowiedz się więcej
+								<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
+							</a>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.service-card:hover .service-icon {
+		transform: scale(1.1);
+	}
+</style>

@@ -1,0 +1,79 @@
+---
+
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-primary to-secondary">
+	<!-- Background Shapes -->
+	<div class="absolute inset-0 overflow-hidden">
+		<div class="absolute -left-[10%] top-[20%] w-[40%] h-[40%] rounded-full bg-accent/20 blur-3xl"></div>
+		<div class="absolute -right-[10%] bottom-[20%] w-[40%] h-[40%] rounded-full bg-white/10 blur-3xl"></div>
+	</div>
+
+	<div class="container mx-auto px-6 py-24 relative z-10">
+		<div class="max-w-3xl">
+			<h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">Patrzymy w przyszłość</h1>
+			<p class="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+				Nasza firma zajmuje się najnowszymi osiągnięciami technologiami informatycznej. Kreujemy przyszłość, budujemy systemy informatyczne, ale
+				przede wszystkim tworzymy najlepsze rozwiązania.
+			</p>
+			<div class="flex flex-wrap gap-4">
+				<a
+					href="/uslugi"
+					class="px-8 py-3 bg-white text-primary rounded-full font-medium hover:bg-accent hover:text-white transition-colors duration-300"
+				>
+					Czytaj więcej
+				</a>
+				<a
+					href="/kontakt"
+					class="px-8 py-3 border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-primary transition-colors duration-300"
+				>
+					Skontaktuj się
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scroll Down Button -->
+	<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+		<button
+			id="scroll-down"
+			class="flex flex-col items-center text-white opacity-80 hover:opacity-100 transition-opacity duration-300"
+			aria-label="Przewiń w dół"
+		>
+			<span class="text-sm mb-2">Przewiń w dół</span>
+			<div class="w-8 h-12 border-2 border-white rounded-full flex items-start justify-center p-2">
+				<div class="w-1 h-3 bg-white rounded-full animate-scroll"></div>
+			</div>
+		</button>
+	</div>
+</section>
+
+<style>
+	@keyframes scroll {
+		0% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		50% {
+			transform: translateY(10px);
+			opacity: 0.5;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	.animate-scroll {
+		animation: scroll 2s ease-in-out infinite;
+	}
+</style>
+
+<script>
+	document.getElementById('scroll-down')?.addEventListener('click', () => {
+		const nextSection = document.querySelector('section:nth-of-type(2)');
+		if (nextSection) {
+			nextSection.scrollIntoView({ behavior: 'smooth' });
+		}
+	});
+</script>

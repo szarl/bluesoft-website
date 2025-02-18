@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="810" height="540" viewBox="0 0 810 540" xmlns="http://www.w3.org/2000/svg">
+    <!-- Blue background -->
+    <rect width="810" height="540" fill="#003399"/>
+    
+    <!-- Circle of 12 yellow stars -->
+    <g fill="#FFCC00">
+        {[...Array(12)].map((_, i) => {
+            const angle = (i * 30 - 90) * Math.PI / 180;
+            const cx = 405 + 160 * Math.cos(angle);
+            const cy = 270 + 160 * Math.sin(angle);
+            return `
+                <path d="M ${cx},${cy} l 0,-40 a 12,12 0 0,1 0,24 a 12,12 0 0,1 0,-24" 
+                            transform="rotate(${i * 30 + 90} ${cx} ${cy})"/>
+            `;
+        }).join('')}
+    </g>
+</svg>

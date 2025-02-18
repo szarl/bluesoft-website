@@ -1,0 +1,32 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'Bluesoft - Tworzymy technologie przyszłości' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script is:inline>
+			AOS.init({
+				duration: 800,
+				offset: 100,
+				once: true,
+			});
+		</script>
+	</body>
+</html>

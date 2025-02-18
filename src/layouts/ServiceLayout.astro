@@ -1,0 +1,33 @@
+---
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import MainLayout from './MainLayout.astro';
+
+interface Props {
+	title: string;
+	heading: string;
+	description: string;
+}
+
+const { title, heading, description } = Astro.props;
+---
+
+<MainLayout title={title}>
+	<Navigation />
+	<main class="pt-20">
+		<!-- Page Header -->
+		<div class="bg-primary text-white py-16">
+			<div class="container mx-auto px-6">
+				<h1 class="text-4xl font-bold mb-4">{heading}</h1>
+				<p class="text-xl text-white/90">{description}</p>
+			</div>
+		</div>
+
+		<!-- Content -->
+		<div class="container mx-auto px-6 py-16">
+			<slot />
+		</div>
+	</main>
+
+	<Footer />
+</MainLayout>

@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.svg';
+
+const menuItems = [
+	{ label: 'O NAS', path: '/o-nas' },
+	{ label: 'USŁUGI', path: '/uslugi' },
+	{ label: 'PRODUKTY', path: '/produkty' },
+	{ label: 'REALIZACJE', path: '/realizacje' },
+	{ label: 'B+R', path: '/b-r' },
+	{ label: 'KONTAKT', path: '/kontakt' },
+];
+---
+
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm">
+	<nav class="container mx-auto px-6 py-4">
+		<div class="flex items-center justify-between">
+			<a href="/" class="flex items-center">
+				<Image src={logo} alt="Bluesoft" class="h-12" />
+			</a>
+
+			<!-- Desktop Menu -->
+			<div class="hidden md:flex items-center space-x-8">
+				{
+					menuItems.map((item) => (
+						<a href={item.path} class="text-primary hover:text-accent transition-colors duration-200 font-medium">
+							{item.label}
+						</a>
+					))
+				}
+			</div>
+
+			<!-- Mobile Menu Button -->
+			<button id="mobile-menu-button" class="md:hidden flex items-center" aria-label="Toggle Menu">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+			{
+				menuItems.map((item) => (
+					<a href={item.path} class="block py-2 text-primary hover:text-accent transition-colors duration-200">
+						{item.label}
+					</a>
+				))
+			}
+		</div>
+	</nav>
+</header>
+
+<script>
+	const mobileMenuButton = document.getElementById('mobile-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+
+	mobileMenuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+	});
+</script>
