@@ -1,0 +1,87 @@
+---
+const contactSections = [
+	{
+		title: 'Centrala',
+		phone1: '+48 774418100',
+		fax: '+48 774459574',
+		email: 'biuro@bluesoft.pl',
+	},
+	{
+		title: 'Sekretariat',
+		name: 'Ewa Gończowska',
+		phone1: '+48 774418100',
+		email: 'ewa.gonczowska@bluesoft.pl',
+	},
+	{
+		title: 'Sprzedaż',
+		name: 'Grzegorz Rutkowski',
+		phone1: '+48 774418101',
+		phone2: '+48 602258689',
+		email: 'grzegorz.rutkowski@bluesoft.pl',
+	},
+	{
+		title: 'Wdrożenia',
+		name: 'Jerzy Spólnicki',
+		phone1: '+48 774418102',
+		phone2: '+48 602258878',
+		email: 'jerzy.spolnicki@bluesoft.pl',
+	},
+	{
+		title: 'Dział Rozwoju',
+		name: 'Jerzy Duda',
+		phone1: '+48 774418103',
+		phone2: '+48 539301119',
+		email: 'jerzy.duda@bluesoft.pl',
+	},
+	{
+		title: 'Dział Techniczny',
+		name: 'Krzysztof Górnicki',
+		phone1: '+48 774418201',
+		phone2: '+48 604140729',
+		email: 'krzysztof.gornicki@bluesoft.pl',
+	},
+	{
+		title: 'Dział Techniczny',
+		name: 'Damian Mrugała',
+		phone1: '+48 774418109',
+		phone2: '+48 604140729',
+		email: 'damian.mrugala@bluesoft.pl',
+	},
+];
+---
+
+<div class="bg-white rounded-lg shadow-lg p-8">
+	<h2 class="text-2xl font-bold text-primary mb-6">Dane kontaktowe</h2>
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+		{
+			contactSections.map((contact, index) => (
+				<div data-aos="fade-up" data-aos-delay={index * 100} class="space-y-4">
+					{contact.title && <h3 class="font-bold text-lg mb-2">{contact.title}</h3>}
+					<div class="space-y-1 text-gray-600">
+						{contact.name && <p>{contact.name}</p>}
+						<p>
+							Tel.{' '}
+							<a href={`tel:${contact.phone1}`} class="text-primary hover:text-primary/80">
+								{contact.phone1}
+							</a>
+						</p>
+						{contact.fax && <p>Fax. {contact.fax}</p>}
+						{contact.phone2 && (
+							<p>
+								Kom.{' '}
+								<a href={`tel:${contact.phone1}`} class="text-primary hover:text-primary/80">
+									{contact.phone2}
+								</a>
+							</p>
+						)}
+						<p>
+							<a href={`mailto:${contact.email}`} class="text-primary hover:text-primary/80">
+								{contact.email}
+							</a>
+						</p>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</div>

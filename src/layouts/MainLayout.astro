@@ -1,5 +1,8 @@
 ---
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+import '../styles/global.css';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -21,6 +24,7 @@ const { title, description = 'Bluesoft - Tworzymy technologie przyszłości' } =
 	</head>
 	<body>
 		<Analytics />
+		<SpeedInsights />
 		<slot />
 		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
 		<script is:inline>
