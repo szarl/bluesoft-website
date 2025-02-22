@@ -4,7 +4,6 @@ import emailLogo from '../assets/emailLogo.svg';
 import mapPointLogo from '../assets/mapPoint.svg';
 import phoneLogo from '../assets/phone.svg';
 
-console.log(emailLogo);
 const currentYear = new Date().getFullYear();
 const footerSections = {
 	kontakt: {
@@ -90,10 +89,10 @@ function getHref(type: string, content: string) {
 										</a>
 									}
 									{!item.img && 
-									<span class="mr-3 text-accent">{item.type}</span>
-									<span class="hover:text-accent transition-colors duration-300">
-										{item.content}
-									</span>
+										<span class="mr-3 text-accent">{item.type}</span>
+										<span class="hover:text-accent transition-colors duration-300">
+											{item.content}
+										</span>
 									}
 										
 								</>

@@ -1,0 +1,127 @@
+---
+// Definicja propsów z typami toastów
+export interface Props {
+	message?: string;
+	type?: 'success' | 'error' | 'info' | 'warning';
+}
+
+const { message = 'Domyślna wiadomość', type = 'info' } = Astro.props;
+
+const icons = {
+	success: '✓',
+	error: '❌',
+	info: 'ℹ️',
+	warning: '⚠️',
+};
+const icon = icons[type];
+---
+
+<div class="toast" id="toast" data-type={type}>
+	<span class="toast-icon">{icon}</span>
+	<p>{message}</p>
+	<button class="close-btn" aria-label="Zamknij">✕</button>
+</div>
+
+<style>
+	.toast {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		padding: 15px;
+		border-radius: 5px;
+		display: none;
+		align-items: center;
+		gap: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+		opacity: 0; /* Domyślnie niewidoczny */
+		transform: translateY(20px); /* Startuje poniżej pozycji */
+	}
+
+	.toast.show {
+		display: flex;
+		animation: fadeIn 0.3s ease-in-out forwards;
+	}
+
+	/* Styl dla różnych typów */
+	.toast[data-type='success'] {
+		background-color: #28a745;
+		color: white;
+	}
+
+	.toast[data-type='error'] {
+		background-color: #dc3545;
+		color: white;
+	}
+
+	.toast[data-type='info'] {
+		background-color: #17a2b8;
+		color: white;
+	}
+
+	.toast[data-type='warning'] {
+		background-color: #ffc107;
+		color: black;
+	}
+
+	.toast-icon {
+		font-size: 20px;
+	}
+
+	.close-btn {
+		background: none;
+		border: none;
+		color: inherit;
+		font-size: 16px;
+		cursor: pointer;
+	}
+
+	/* Animacje */
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+	}
+</style>
+
+<script>
+	const toast = document.getElementById('toast');
+	const closeBtn = toast.querySelector('.close-btn');
+
+	function showToast() {
+		toast.classList.add('show');
+		// Ukryj po 3 sekundach z animacją
+		setTimeout(() => {
+			toast.style.animation = 'fadeOut 0.3s ease-in-out forwards';
+			setTimeout(() => {
+				toast.classList.remove('show');
+				toast.style.animation = ''; // Reset animacji
+			}, 300); // Czas zgodny z animacją fadeOut
+		}, 3000);
+	}
+
+	closeBtn.addEventListener('click', () => {
+		toast.style.animation = 'fadeOut 0.3s ease-in-out forwards';
+		setTimeout(() => {
+			toast.classList.remove('show');
+			toast.style.animation = ''; // Reset animacji
+		}, 300);
+	});
+
+	window.showToast = showToast;
+</script>

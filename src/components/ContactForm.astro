@@ -1,4 +1,8 @@
-<form action="#" method="POST" class="space-y-6">
+---
+import { actions } from 'astro:actions';
+---
+
+<form action={actions.send} method="POST" class="space-y-6">
 	<div>
 		<label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Imię i nazwisko </label>
 		<input
