@@ -158,7 +158,7 @@ const projects = [
 				const durationMultiplier = Math.max(1, screenWidth / 1000);
 				const animation = {
 					duration: baseDuration * durationMultiplier,
-					easing: (t) => t,
+					easing: (t: number) => t,
 				};
 				const slider = new KeenSlider(sliderElement, {
 					loop: true,
