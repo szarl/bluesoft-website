@@ -1,0 +1,253 @@
+---
+import { Image } from 'astro:assets';
+import inteligetneOswietlenieLed from '../../assets/inteligetne-oswietlenie-led.webp';
+import systemAutomatykiBudowlanej from '../../assets/system-automatyki-budowlanej.jpg';
+import systemZarzadzaniaEnergia from '../../assets/system-zarzadzania-energia.webp';
+import Footer from '../../components/Footer.astro';
+import Navigation from '../../components/Navigation.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// Define realizations array
+const realizations = [
+	{
+		title: 'Instalacja Elektryczna i Teletechniczna',
+		client: 'Uniwersytet Ekonomiczny we Wrocławiu',
+		image: systemZarzadzaniaEnergia,
+		category: 'Edukacja',
+		description: 'Wykonanie instalacji elektrycznej oraz sieci teletechnicznej w pomieszczeniach dziekanatów i korytarza w budynku A.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Utrzymanie Łączności Alarmowej',
+		client: 'Egis Projects Polska SA',
+		image: inteligetneOswietlenieLed,
+		category: 'Infrastruktura',
+		description: 'Utrzymanie w sprawności łączności alarmowej na autostradzie A4 Wrocław-Katowice.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Farma Fotowoltaiczna i Automatyka Budynkowa',
+		client: 'Uniwersytet Opolski',
+		image: systemAutomatykiBudowlanej,
+		category: 'Edukacja',
+		description:
+			'Wykonanie farmy fotowoltaicznej, systemu automatyki budynkowej (sterowanie grzejnikami) oraz opomiarowania i odczytów energii elektrycznej.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Wyposażenie Serwerowni',
+		client: 'SPZOZ w Głuchołazach',
+		image: systemZarzadzaniaEnergia,
+		category: 'Zdrowie',
+		description: 'Wyposażenie serwerowni, system SSWIN, CCTV oraz kontroli dostępu.',
+		date: '07-09.2018',
+	},
+	{
+		title: 'Dostosowanie Budynku do Wymogów Przeciwpożarowych',
+		client: 'Starostwo Powiatowe w Krapkowicach',
+		image: inteligetneOswietlenieLed,
+		category: 'Administracja',
+		description: 'Dostosowanie budynku starostwa do wymogów przeciwpożarowych.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Wymiana Oświetlenia na LED',
+		client: 'Szpital Wojewódzki w Opolu sp. z o.o.',
+		image: systemAutomatykiBudowlanej,
+		category: 'Zdrowie',
+		description: 'Dostawa i wymiana oświetlenia na energooszczędne w technologii LED.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Sieć LAN i Systemy Bezpieczeństwa',
+		client: 'Miasto Opole, MOSiR w Opolu',
+		image: systemZarzadzaniaEnergia,
+		category: 'Sport',
+		description: 'Projekt i wykonanie sieci LAN, systemu CCTV, SSWIN oraz kontroli dostępu dla Hali Widowiskowo-Sportowej w Opolu.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Monitorowanie Serwerowni',
+		client: 'T-Mobile Polska',
+		image: inteligetneOswietlenieLed,
+		category: 'Telekomunikacja',
+		description: 'Monitorowanie serwerowni dla T-Mobile Polska.',
+		date: '2016-2017',
+	},
+	{
+		title: 'Przebudowa Sieci Teleinformatycznej',
+		client: 'Urząd Miasta Opola',
+		image: systemAutomatykiBudowlanej,
+		category: 'Administracja',
+		description: 'Przebudowa sieci teleinformatycznej i dedykowanej sieci na pierwszym i drugim piętrze budynku przy Placu Wolności 7-8 w Opolu.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Modernizacja Infrastruktury Teleinformatycznej',
+		client: 'Zakład Karny w Głubczycach',
+		image: systemZarzadzaniaEnergia,
+		category: 'Administracja',
+		description:
+			'Prace budowlane i modernizacyjne w branży elektrycznej/teletechnicznej w Zakładzie Karnym w Głubczycach (Postępowanie nr DKW – 220/02/2014).',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Instalacja Teletechniczna dla Centrum Wystawienniczo-Konferencyjnego',
+		client: 'Centrum Wystawienniczo-Konferencyjne w Opolu',
+		image: inteligetneOswietlenieLed,
+		category: 'Biznes',
+		description: 'Wykonanie i instalacja sieci okablowania strukturalnego kat. dla Centrum przy ul. Kępskiej w Opolu.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Kolumny Alarmowe dla AOW A-8',
+		client: 'GDDKiA Wrocław',
+		image: systemAutomatykiBudowlanej,
+		category: 'Infrastruktura',
+		description:
+			'Sporządzenie dokumentacji projektowej łączności autostradowej oraz wykonanie kolumn alarmowych dla Autostradowej Obwodnicy Wrocławia AOW A-8.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Modernizacja Punktu Dystrybucyjnego i Okablowania',
+		client: 'Uniwersytet Opolski',
+		image: systemZarzadzaniaEnergia,
+		category: 'Edukacja',
+		description:
+			'Modernizacja Centralnego Punktu Dystrybucyjnego sieci przy ul. Oleskiej 48 oraz wykonanie, rozbudowa i modernizacja okablowania strukturalnego w poszczególnych obiektach.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Dostawa i Instalacja Sprzętu Komputerowego',
+		client: '4System Polska',
+		image: inteligetneOswietlenieLed,
+		category: 'Technologia',
+		description:
+			'Dostawa, instalacja i uruchomienie sprzętu komputerowego: serwer, komputery z oprogramowaniem, infokioski, sprzęt do wideokonferencji.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Dostosowanie Autostrady A4 do Standardów Płatnych',
+		client: 'Autostrada A4 Wrocław-Katowice',
+		image: systemAutomatykiBudowlanej,
+		category: 'Infrastruktura',
+		description:
+			'Zaprojektowanie i wykonanie dostosowania autostrady A4 (odcinek Wrocław-Sośnica, 153+227 km ÷ 340+200 km) do standardów autostrady płatnej, w tym kabel światłowodowy.',
+		date: '19 stycznia 2021',
+	},
+	{
+		title: 'Modernizacja Punktu Dystrybucyjnego przy ul. Oleskiej 48',
+		client: 'Uniwersytet Opolski',
+		image: systemZarzadzaniaEnergia,
+		category: 'Edukacja',
+		description:
+			'Przebudowa przyłącza elektroenergetycznego nN (zasilanie podstawowe) oraz wykonanie modernizacji Centralnego Punktu Dystrybucyjnego przy ul. Oleskiej 48.',
+		date: '19 stycznia 2021',
+	},
+];
+
+// Pagination settings (moved up for getStaticPaths)
+const ITEMS_PER_PAGE = 6;
+const totalPages = Math.ceil(realizations.length / ITEMS_PER_PAGE);
+
+// Generate static paths for prerendering
+export const getStaticPaths = () => {
+	const ITEMS_PER_PAGE = 6;
+	const realizationsLength = 16;
+	const totalPages = Math.ceil(realizationsLength / ITEMS_PER_PAGE);
+	const paths = [];
+	for (let i = 1; i <= totalPages; i++) {
+		paths.push({ params: { page: i.toString() } });
+	}
+	return paths;
+};
+
+// Get the current page from the dynamic route
+const { page } = Astro.params;
+const currentPage = parseInt(page, 10);
+
+if (isNaN(currentPage) || currentPage < 1 || currentPage > totalPages) {
+	return new Response(null, { status: 404 });
+}
+
+const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+const endIndex = startIndex + ITEMS_PER_PAGE;
+const currentRealizations = realizations.slice(startIndex, endIndex);
+
+export const prerender = true;
+---
+
+<MainLayout title={`Bluesoft - Realizacje - Strona ${currentPage}`}>
+	<Navigation />
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-r from-primary to-secondary text-white pb-20 pt-32" data-aos="fade-up">
+		<div class="container mx-auto px-6 text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4">Nasze Realizacje</h1>
+			<p class="text-lg md:text-xl max-w-2xl mx-auto">Odkryj pełen zakres naszych projektów – od infrastruktury po nowoczesne technologie.</p>
+		</div>
+	</section>
+
+	<!-- Realizations Grid -->
+	<section class="py-16 bg-gray-50">
+		<div class="container mx-auto px-6">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{
+					currentRealizations.map((project, index) => (
+						<div data-aos="fade-up" data-aos-delay={index * 100} class="bg-white rounded-lg shadow-lg overflow-hidden group">
+							<div class="relative overflow-hidden">
+								<Image
+									src={project.image}
+									alt={project.title}
+									class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
+								/>
+							</div>
+							<div class="p-6">
+								<span class="text-sm text-accent font-medium">{project.category}</span>
+								<h3 class="text-xl font-bold text-gray-900 mt-2">{project.title}</h3>
+								<p class="text-gray-600 mt-2">{project.client}</p>
+								<p class="text-gray-600 mt-2 text-sm">{project.description}</p>
+								<p class="text-gray-500 mt-1 text-xs">{project.date}</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+
+			<!-- Pagination Controls -->
+			<div class="flex justify-center items-center mt-12 gap-4" data-aos="fade-up" data-aos-delay="100">
+				{
+					currentPage > 1 && (
+						<a
+							href={`/realizacje/${currentPage - 1}`}
+							class="bg-primary border-primary border-2 text-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:border-primary hover:text-primary transition-colors duration-300"
+						>
+							Poprzednia
+						</a>
+					)
+				}
+				<span class="text-gray-700">Strona {currentPage} z {totalPages}</span>
+				{
+					currentPage < totalPages && (
+						<a
+							href={`/realizacje/${currentPage + 1}`}
+							class="bg-primary border-primary border-2 text-white font-semibold py-2 px-4 rounded-full hover:bg-white hover:border-primary hover:text-primary transition-colors duration-300"
+						>
+							Następna
+						</a>
+					)
+				}
+			</div>
+		</div>
+	</section>
+	<Footer />
+</MainLayout>
+
+<style>
+	.shadow-lg:hover {
+		transform: translateY(-5px);
+		transition: transform 0.3s ease;
+	}
+	.bg-primary-dark {
+		background-color: #1e3a8a; /* Adjust to match your primary-dark shade */
+	}
+</style>

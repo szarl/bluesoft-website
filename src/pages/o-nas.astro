@@ -1,0 +1,118 @@
+---
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Team data with descriptions
+const team = [
+	{
+		title: 'Sekretariat',
+		name: 'Ewa Gończowska',
+		description: 'Z uśmiechem dbam o to, by wszystko w firmie działało jak w zegarku. Organizacja to moja pasja od lat!',
+	},
+	{
+		title: 'Sprzedaż',
+		name: 'Grzegorz Rutkowski',
+		description: 'Uwielbiam rozmawiać z ludźmi i znajdować dla nich najlepsze rozwiązania. Sprzedaż to dla mnie sztuka!',
+	},
+	{
+		title: 'Wdrożenia',
+		name: 'Jerzy Spólnicki',
+		description: 'Wdrożenia to moje pole bitwy – od lat z pasją sprawiam, że technologia działa dla ludzi.',
+	},
+	{
+		title: 'Dział Rozwoju',
+		name: 'Jerzy Duda',
+		description: 'Tworzenie nowych pomysłów to moja codzienność. Innowacje napędzają mnie od zawsze!',
+	},
+	{
+		title: 'Dział Techniczny',
+		name: 'Krzysztof Górnicki',
+		description: 'Rozwiązuję techniczne zagadki z radością. Dla mnie każdy projekt to nowa przygoda!',
+	},
+	{
+		title: 'Dział Techniczny',
+		name: 'Damian Mrugała',
+		description: 'Technika to moja miłość od lat. Z entuzjazmem buduję rozwiązania, które ułatwiają życie.',
+	},
+];
+---
+
+<MainLayout title="Bluesoft - O Nas">
+	<Navigation />
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-r from-primary to-secondary text-white pb-20 pt-32" data-aos="fade-up">
+		<div class="container mx-auto px-6 text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4">O Nas</h1>
+			<p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
+				Jesteśmy BlueSoft – zgraną ekipą, która od lat tworzy rozwiązania teleinformatyczne z pasją i sercem. Pracujemy dla Was, by technologia
+				ułatwiała życie!
+			</p>
+			<img src="https://picsum.photos/800/400?random=8" alt="Zespół BlueSoft" class="mx-auto rounded-lg shadow-lg max-w-full h-auto" />
+		</div>
+	</section>
+
+	<!-- About Us Section -->
+	<section class="py-16 bg-gray-100" data-aos="fade-up" data-aos-delay="200">
+		<div class="container mx-auto px-6">
+			<h2 class="text-3xl font-semibold text-center text-gray-800 mb-12">Kim Jesteśmy?</h2>
+			<div class="flex flex-col md:flex-row items-center gap-8">
+				<img src="https://picsum.photos/400/300?random=9" alt="Nasza historia" class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md" />
+				<div class="text-gray-700">
+					<p class="mb-4">
+						BlueSoft to więcej niż firma – to rodzina 10 stałych pracowników i kilkunastu zaufanych współpracowników, którzy razem tworzą coś
+						wyjątkowego. Od 1997 roku łączymy doświadczenie z nowoczesnymi technologiami, by wspierać naszych klientów w świecie
+						teleinformatyki.
+					</p>
+					<p class="mb-4">
+						Nasza filozofia? Robić to, co kochamy, w sposób prosty i skuteczny. Stawiamy na sprawdzone rozwiązania, ale nie boimy się marzyć o
+						nowych możliwościach. Dzięki temu od lat jesteśmy w gronie liderów rynku – m.in. wśród 500 największych firm wg „Teleinfo” i w
+						rankingu „Deloitte Touche” w 2000 roku.
+					</p>
+					<p>
+						Najważniejsze są dla nas relacje – z klientami, partnerami i między sobą. Wierzymy, że zadowolenie tych, z którymi pracujemy, to
+						klucz do naszego sukcesu.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Team Section -->
+	<section class="py-16" data-aos="fade-up">
+		<div class="container mx-auto px-6">
+			<h2 class="text-3xl font-semibold text-center text-gray-800 mb-12">Poznaj Nasz Zespół</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+				{
+					team.map((member, index) => (
+						<div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center">
+							<img
+								src={`https://picsum.photos/200/200?random=${index + 10}`}
+								alt={member.name}
+								class="w-32 h-32 object-cover rounded-full mb-4"
+							/>
+							<h3 class="text-xl font-bold text-blue-600 mb-2">{member.name}</h3>
+							<p class="text-gray-600 mb-2">{member.title}</p>
+							<p class="text-gray-700">{member.description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+	<Footer />
+</MainLayout>
+
+<style>
+	/* Custom styles */
+	.shadow-md:hover {
+		transform: translateY(-5px);
+		transition: transform 0.3s ease;
+	}
+	img {
+		transition: transform 0.3s ease;
+	}
+	img:hover {
+		transform: scale(1.05);
+	}
+</style>

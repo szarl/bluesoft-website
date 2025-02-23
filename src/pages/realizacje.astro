@@ -1,0 +1,12 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+export const prerender = true;
+
+if (import.meta.env.PROD) {
+	return Astro.redirect('/realizacje/1', 301);
+}
+---
+
+<MainLayout title="Bluesoft - Realizacje">
+	<p>Przekierowanie do <a href="/realizacje/1">pierwszej strony realizacji</a>...</p>
+</MainLayout>
