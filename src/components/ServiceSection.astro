@@ -1,0 +1,29 @@
+---
+// src/components/ServiceSection.astro
+export interface Props {
+	title: string;
+	image: string;
+	description: string;
+	details?: string[];
+	altText: string;
+}
+
+const { title, image, description, details, altText } = Astro.props;
+---
+
+<section class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-8">
+	<div class="md:w-1/2 space-y-4">
+		<h2 class="text-3xl font-bold text-gray-800">{title}</h2>
+		<p class="text-gray-600 leading-relaxed">{description}</p>
+		{
+			details && (
+				<ul class="list-disc list-inside space-y-2 text-gray-600">
+					{details.map((detail) => (
+						<li>{detail}</li>
+					))}
+				</ul>
+			)
+		}
+	</div>
+	<img src={image} alt={altText} loading="lazy" class="md:w-1/2 rounded-lg shadow-lg object-cover" />
+</section>
