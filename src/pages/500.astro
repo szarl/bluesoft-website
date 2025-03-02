@@ -1,0 +1,21 @@
+---
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import Layout from '../layouts/MainLayout.astro';
+
+interface Props {
+	error: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout title="500: Internal Server Error">
+	<Navigation />
+	<main class="container mx-auto py-40 text-center">
+		<h1 class="text-4xl font-bold mb-4">500: Internal Server Error</h1>
+		<p class="text-xl text-gray-600">Something went wrong on our end. Please try again later.</p>
+		<p>{error instanceof Error ? error.message : 'Unknown error'}</p>
+	</main>
+	<Footer />
+</Layout>

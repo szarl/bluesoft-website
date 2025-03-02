@@ -1,0 +1,16 @@
+---
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import Layout from '../layouts/MainLayout.astro';
+---
+
+<Layout title="404: Nie znaleziono strony">
+	<Navigation />
+	<main class="container mx-auto py-40 text-center">
+		<h1 class="text-4xl font-bold mb-4">404: Nie znaleziono strony</h1>
+		<p class="text-xl mb-8">Nie martw się! Na pewno nad tym już pracujemy!</p>
+		<p class="text-lg mb-8">Strona, której szukasz, nie istnieje albo nie została przeniesiona.</p>
+		<a href="/" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"> Powrót do strony głównej </a>
+	</main>
+	<Footer />
+</Layout>
