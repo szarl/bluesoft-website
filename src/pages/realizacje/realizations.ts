@@ -1,8 +1,9 @@
 import inteligetneOswietlenieLed from '../../assets/inteligetne-oswietlenie-led.webp';
 import systemAutomatykiBudowlanej from '../../assets/system-automatyki-budowlanej.jpg';
 import systemZarzadzaniaEnergia from '../../assets/system-zarzadzania-energia.webp';
+import type { Realization } from '../../models/Realization';
 
-export const realizations = [
+export const realizations: Realization[] = [
     {
         title: 'Instalacja Elektryczna i Teletechniczna',
         slug: 'instalacja-elektryczna-i-teletechniczna',

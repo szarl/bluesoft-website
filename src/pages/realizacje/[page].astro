@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import Footer from '../../components/Footer.astro';
 import Navigation from '../../components/Navigation.astro';
+import Realization from '../../components/Realization.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { realizations } from './realizations';
 
@@ -53,26 +53,7 @@ export const prerender = true;
 		<section class="py-16 bg-gray-50">
 			<div class="container mx-auto px-6">
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{
-						currentRealizations.map((project, index) => (
-							<div data-aos="fade-up" data-aos-delay={index * 100} class="bg-white rounded-lg shadow-lg overflow-hidden group">
-								<div class="relative overflow-hidden">
-									<Image
-										src={project.image}
-										alt={project.title}
-										class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
-									/>
-								</div>
-								<div class="p-6">
-									<span class="text-sm text-accent font-medium">{project.category}</span>
-									<h3 class="text-xl font-bold text-gray-900 mt-2">{project.title}</h3>
-									<p class="text-gray-600 mt-2">{project.client}</p>
-									<p class="text-gray-600 mt-2 text-sm">{project.description}</p>
-									<p class="text-gray-500 mt-1 text-xs">{project.date}</p>
-								</div>
-							</div>
-						))
-					}
+					{currentRealizations.map((project, index) => <Realization project={project} index={index} />)}
 				</div>
 
 				<!-- Pagination Controls -->
